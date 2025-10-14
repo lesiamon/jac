@@ -1,5 +1,5 @@
 """A Number Guessing Game with Player Name"""
-""""
+"""
 import random;
 
 
@@ -64,14 +64,15 @@ with entry {
     game = GuessTheNumberGame();
     game.play();
 }"""
-#runs well no issue with it as addition 
+
 """with entry {
     a = int(input("Enter first number: ")) ;
     b = int(input("Enter second number: ")) ;
     sum = a + b;
     print("The sum is: " + str(sum));
 }"""
-// guess_game_basic.jac
+
+"""// guess_game_basic.jac
 use std;
 
 obj Game {
@@ -112,4 +113,32 @@ with entry {
         }
     }
 }
+"""
+node User {
+    has username: str;
+    has email: str;
+    has created_at: str;
+}
 
+node Post {
+    has title: str;
+    has content: str;
+    has likes: int = 0;
+}
+
+with entry {
+    # This is where your program starts.
+    # We will create the nodes in the graph here.
+    user = root ++> User(
+        username="alice",
+        email="alice@example.com",
+        created_at="2024-01-01"
+    );
+
+    post = user ++> Post(
+        title="Hello Jac!",
+        content="My first post in Jac"
+    );
+
+    print(f"User {user[0].username} created post: {post[0].title}");
+}
